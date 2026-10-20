@@ -14,21 +14,39 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- Intentionally outdated dependencies for isolated SecAgent testing only. -->
+    <!--
+      SECAGENT TEST FIXTURE ONLY. Do not merge this POM into main.
+
+      A historical imported BOM intentionally pins transitive commons-text:1.9,
+      even though the *direct* commons-configuration2 dependency is already
+      at 2.15.1. This tests SecAgent's final Maven dependencyManagement
+      override after direct/parent upgrades are exhausted.
+
+      Do not manually declare commons-text as a direct dependency and do not
+      add a local commons-text entry to dependencyManagement: SecAgent must
+      generate that entry in its remediation PR.
+    -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.futureble.bom</groupId>
+                <artifactId>commons-bom</artifactId>
+                <version>1.1.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
-        <!-- SCENARIO 1: Direct vulnerable dependency -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.26.1</version>
-        </dependency>
-        <!-- SCENARIO 2: Vulnerable transitive dependency -->
+        <!-- Current/patched direct parent: ordinary upgrade is not expected. -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-configuration2</artifactId>
             <version>2.15.1</version>
         </dependency>
-        <!-- JUnit tests -->
+
+        <!-- Keep the existing Java 17/JUnit build validation. -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
