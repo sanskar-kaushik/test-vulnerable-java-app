@@ -46,6 +46,18 @@
             <version>2.15.1</version>
         </dependency>
 
+        <!-- App.java imports LogManager and Logger; keep Log4j on patched versions. -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.26.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.26.1</version>
+        </dependency>
+
         <!-- Keep the existing Java 17/JUnit build validation. -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
