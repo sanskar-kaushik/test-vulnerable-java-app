@@ -33,7 +33,28 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-        </dependencies>
+        
+      <!-- SecAgent AI managed override BEGIN -->
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-text</artifactId>
+        <version>1.15.0</version>
+      </dependency>
+      <!-- SecAgent AI managed override END -->
+      <!-- SecAgent AI managed override BEGIN -->
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.22.0</version>
+      </dependency>
+      <!-- SecAgent AI managed override END -->
+      <!-- SecAgent AI managed override BEGIN -->
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.21.0</version>
+      </dependency>
+      <!-- SecAgent AI managed override END --></dependencies>
     </dependencyManagement>
 
     <dependencies>
@@ -42,14 +63,14 @@
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.14.1</version>
+            <version>2.26.1</version>
         </dependency>
 
         <!-- SCENARIO B: vulnerable direct parent, to upgrade to resolve its CVEs. -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-configuration2</artifactId>
-            <version>2.7</version>
+            <version>2.15.1</version>
         </dependency>
 
         <!-- SCENARIO C: BOM-managed transitive commons-text:1.9 should remain -->
